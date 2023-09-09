@@ -1,0 +1,16 @@
+{% extends 'flatpages/default.html' %}
+{% load custom_filter %}
+
+{% block title %}
+ News
+{% endblock title %}
+
+<!-- В контенте на странице мы выводим все товары -->
+{% block content %}
+<h2>{{new.title|Censor}}</h2>
+<p>{{new.dateCreation|date:'d. M. Y'}}</p>
+<p>{{new.text|Censor}}</p>
+
+<p>Категория:{% for category in new.postCategory.all %}{{ category.name }}{% if not forloop.last %}, {% endif %}{% endfor %} </p>
+
+{% endblock content %}
